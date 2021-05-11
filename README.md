@@ -8,6 +8,7 @@
   - create the linbo directory,
   - clone the linuxmuster-linbo7 repository into the linbo directory and
   - create the docker image containing the build environment.  
+  
 Note:
 - The linbo directory will be passed to the docker container as home directory for the linbo build user.
 - The linbo build user inherits his uid/gid from the current user.
