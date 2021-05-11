@@ -28,7 +28,8 @@ if [ -z "$GIT" ]; then
 fi
 
 # create linbo build directory
-mkdir -p linbo
+mkdir -p linbo/.gnupg
+chmod 700 linbo/.gnupg
 
 # clone repo
 cd linbo
