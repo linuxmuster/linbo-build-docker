@@ -10,8 +10,6 @@
 
 MY_PKG="linuxmuster-linbo7"
 MY_REPO="https://github.com/linuxmuster/$MY_PKG.git"
-MY_UID="$(id -u)"
-MY_GID="$(id -g)"
 
 # check prerequisites
 if ! grep -q "$" Dockerfile; then
