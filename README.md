@@ -19,7 +19,7 @@ Note:
 
 ### Usage
 - To build the debian package simply invoke `./build_pkg.sh`. This fires up the container and invokes for its part the package build script delivered with linuxmuster-linbo7.
-- The console output is logged to `linbo/linuxmuster-linbo7/build.log`.
+- The console output is logged to `linbo/build.log`.
 - With the termination of the script the container shuts down and will be removed.
 - The resulting ubuntu packages are located in the linbo directory.
 
