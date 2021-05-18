@@ -2,7 +2,7 @@
 # Dockerfile for creation of a linbo build environment docker image
 #
 # thomas@linuxmuster.net
-# 20210511
+# 20210518
 #
 
 FROM ubuntu:18.04
@@ -21,7 +21,5 @@ RUN groupadd -g ${MY_GID} ${MY_USER}
 RUN useradd -s /bin/bash -c 'linbo build user' -d /home/${MY_USER} -M -u ${MY_UID} -g ${MY_USER} -G sudo ${MY_USER}
 RUN echo "${MY_USER} ALL=NOPASSWD: ALL" > /etc/sudoers.d/${MY_USER}
 RUN chmod 400 /etc/sudoers.d/${MY_USER}
-
-VOLUME ["/home/${MY_USER}"]
 
 ENTRYPOINT ["/bin/bash"]
