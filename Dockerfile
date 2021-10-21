@@ -2,7 +2,7 @@
 # Dockerfile for creation of a linbo build environment docker image
 #
 # thomas@linuxmuster.net
-# 20210518
+# 20211021
 #
 
 FROM ubuntu:18.04
@@ -14,8 +14,8 @@ ENV MY_UID 1000
 ENV MY_GID 1000
 
 RUN apt-get update
-RUN apt-get -y install bash bash-completion ccache curl dpkg-dev sudo
-RUN apt-get -y install $(curl -s ${CONTROL_URL} | sed -n '/Build-Depends:/,/Package:/p' | grep -v ^Package | sed -e 's|^Build-Depends: ||' | sed -e 's|,||g') && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install bash bash-completion ccache curl dpkg-dev sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install $(curl -s ${CONTROL_URL} | sed -n '/Build-Depends:/,/Package:/p' | grep -v ^Package | sed -e 's|^Build-Depends: ||' | sed -e 's|,||g') && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g ${MY_GID} ${MY_USER}
 RUN useradd -s /bin/bash -c 'linbo build user' -d /home/${MY_USER} -M -u ${MY_UID} -g ${MY_USER} -G sudo ${MY_USER}
