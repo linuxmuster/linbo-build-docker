@@ -4,6 +4,8 @@
 
 This build environment allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
 
+Note: Run the scripts as an unprivileged user. The user has to member of the group _docker_.
+
 ### Installation/Update
 - Clone this repository.
 - Change into the repo directory and invoke `./setup_env.sh`.
