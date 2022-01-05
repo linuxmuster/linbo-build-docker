@@ -15,6 +15,11 @@ if [ "$MY_UID" = "O" ]; then
   exit 1
 fi
 
+if ! id | grep -qw docker; then
+  echo "User $USER has to be member of the group docker!"
+  exit 1
+fi
+
 # sets uid/gid in Dockerfile
 sed -i "s|^ENV MY_UID .*|ENV MY_UID $MY_UID|" Dockerfile
 sed -i "s|^ENV MY_GID .*|ENV MY_GID $MY_GID|" Dockerfile
