@@ -5,7 +5,7 @@
 # builds the docker image
 #
 # thomas@linuxmuster.net
-# 20210511
+# 20220504
 #
 
 MY_PKG="linuxmuster-linbo7"
@@ -27,17 +27,20 @@ if [ -z "$GIT" ]; then
   exit 1
 fi
 
+# switch to branch 18.04
+git checkout 18.04 || exit 1
+
 # create linbo build directory
 mkdir -p linbo/.gnupg
 chmod 700 linbo/.gnupg
 
 # clone repo
 cd linbo
-if [ -d "$MY_PKG/debian" ]; then
-  echo "Repo is already cloned."
-elif [ -d "$MY_PKG" ];then
-  echo "There is already a directory $MY_PKG!"
-  exit 1
+if [ -d "$MY_PKG" ]; then
+  cd "$MY_PKG"
+  git pull || exit 1
+  git checkout 4.0 || exit 1
+  cd ..
 else
   git clone "$MY_REPO" || exit 1
 fi

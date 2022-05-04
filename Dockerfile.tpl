@@ -2,20 +2,21 @@
 # Dockerfile for creation of a linbo build environment docker image
 #
 # thomas@linuxmuster.net
-# 20211021
+# 20220426
 #
 
 FROM ubuntu:18.04
 MAINTAINER thomas@linuxmuster.net
 
-ENV CONTROL_URL https://raw.githubusercontent.com/linuxmuster/linuxmuster-linbo7/main/debian/control
 ENV MY_USER linbo
 ENV MY_UID 1000
 ENV MY_GID 1000
 
+COPY control /tmp/control
+
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install bash bash-completion ccache curl dpkg-dev sudo
-RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install $(curl -s ${CONTROL_URL} | sed -n '/Build-Depends:/,/Package:/p' | grep -v ^Package | sed -e 's|^Build-Depends: ||' | sed -e 's|,||g') && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install $(cat /tmp/control | sed -n '/Build-Depends:/,/Package:/p' | grep -v ^Package | sed -e 's|^Build-Depends: ||' | sed -e 's|,||g') && rm -rf /var/lib/apt/lists/* /tmp/control
 
 RUN groupadd -g ${MY_GID} ${MY_USER}
 RUN useradd -s /bin/bash -c 'linbo build user' -d /home/${MY_USER} -M -u ${MY_UID} -g ${MY_USER} -G sudo ${MY_USER}

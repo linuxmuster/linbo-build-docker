@@ -1,8 +1,8 @@
 # linbo-build-docker
 
-## Docker build environment for linuxmuster-linbo7
+## Docker build environment for linuxmuster-linbo7 (branch 18.04)
 
-This build environment allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
+This build environment based on Ubuntu 18.04 allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
 
 Note: Run the scripts as an unprivileged user. The user has to member of the group _docker_.
 
@@ -11,9 +11,10 @@ Note: Run the scripts as an unprivileged user. The user has to member of the gro
 - Change into the repo directory and invoke `./setup_env.sh`.
 - This will
   - create the linbo directory,
-  - clone the linuxmuster-linbo7 repository into the linbo directory and
+  - clone the linuxmuster-linbo7 repository into the linbo directory,
+  - check out branch 4.0,
   - create the docker image containing the build environment.
-- To update the environment simply call `./update_env.sh`. Note: This will not update the linuxmuster-linbo7 repo. You have to keep this up to date manually.  
+- To update the environment simply call `./update_env.sh`. Note: This will not update the linuxmuster-linbo7 repo. You have to keep this up to date manually.
 
 ### Usage
 - To build the debian package simply invoke `./build_pkg.sh`. This fires up the container and invokes for its part the package build script delivered with linuxmuster-linbo7.

@@ -3,10 +3,10 @@
 # create docker image
 #
 # thomas@linuxmuster.net
-# 20220105
+# 20220426
 #
 
-MY_NAME="linbo-build-docker"
+MY_NAME="linbo-build-docker-1804"
 MY_UID="$(id -u)"
 MY_GID="$(id -g)"
 
@@ -21,8 +21,14 @@ if ! id | grep -qw docker; then
 fi
 
 # sets uid/gid in Dockerfile
-sed -i "s|^ENV MY_UID .*|ENV MY_UID $MY_UID|" Dockerfile
-sed -i "s|^ENV MY_GID .*|ENV MY_GID $MY_GID|" Dockerfile
+sed -e "s|^ENV MY_UID .*|ENV MY_UID $MY_UID|
+        s|^ENV MY_GID .*|ENV MY_GID $MY_GID|" Dockerfile.tpl > Dockerfile
+
+# provide control file from linbo src tree
+cp ./linbo/linuxmuster-linbo7/debian/control . || exit 1
 
 # start build
 docker build -t "$MY_NAME" .
+
+# remove control file again
+rm -f control
