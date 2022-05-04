@@ -2,10 +2,10 @@
 # Dockerfile for creation of a linbo build environment docker image
 #
 # thomas@linuxmuster.net
-# 20220426
+# 20220504
 #
 
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER thomas@linuxmuster.net
 
 ENV MY_USER linbo

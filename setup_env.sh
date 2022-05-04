@@ -27,9 +27,6 @@ if [ -z "$GIT" ]; then
   exit 1
 fi
 
-# switch to branch 18.04
-git checkout 18.04 || exit 1
-
 # create linbo build directory
 mkdir -p linbo/.gnupg
 chmod 700 linbo/.gnupg
@@ -39,7 +36,6 @@ cd linbo
 if [ -d "$MY_PKG" ]; then
   cd "$MY_PKG"
   git pull || exit 1
-  git checkout 4.0 || exit 1
   cd ..
 else
   git clone "$MY_REPO" || exit 1

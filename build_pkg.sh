@@ -3,11 +3,11 @@
 # starts container and builds package
 #
 # thomas@linuxmuster.net
-# 20220426
+# 20220504
 #
 
 MY_DIR="$(pwd)"
-MY_NAME="linbo-build-docker-1804"
+MY_NAME="linbo-build-docker-2204"
 MY_PKG="linuxmuster-linbo7"
 MY_UID="$(id -u)"
 MY_GID="$(id -g)"
