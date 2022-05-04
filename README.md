@@ -28,7 +28,7 @@ Note:
 ### Files
 - build_pkg.sh: package build script.
 - create_dockerimage.sh: creates the docker image, inkoved by environment_setup.sh.
-- Dockerfile: image definition file.
+- Dockerfile.tpl: image definition file (template).
 - setup_env.sh: initially sets up the build environment.
 - update_env.sh: pulls the git repo and recreates the docker image.
 - start_container.sh: starts the container in interactive mode.
