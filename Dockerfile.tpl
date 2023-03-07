@@ -2,7 +2,7 @@
 # Dockerfile for creation of a linbo build environment docker image
 #
 # thomas@linuxmuster.net
-# 20220504
+# 20230306
 #
 
 FROM ubuntu:22.04
@@ -14,8 +14,8 @@ ENV MY_GID 1000
 
 COPY control /tmp/control
 
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install bash bash-completion ccache curl dpkg-dev sudo
+RUN apt-get update && apt-get -y dist-upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install bash bash-completion ccache curl dpkg-dev dpkg-sig sudo
 RUN DEBIAN_FRONTEND=noninteractive apt-get -o "Dpkg::Options::=--force-confold" -y install $(cat /tmp/control | sed -n '/Build-Depends:/,/Package:/p' | grep -v ^Package | sed -e 's|^Build-Depends: ||' | sed -e 's|,||g') && rm -rf /var/lib/apt/lists/* /tmp/control
 
 RUN groupadd -g ${MY_GID} ${MY_USER}
