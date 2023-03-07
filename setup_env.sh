@@ -5,17 +5,13 @@
 # builds the docker image
 #
 # thomas@linuxmuster.net
-# 20220504
+# 20220511
 #
 
 MY_PKG="linuxmuster-linbo7"
 MY_REPO="https://github.com/linuxmuster/$MY_PKG.git"
 
 # check prerequisites
-if ! grep -q "$" Dockerfile; then
-  echo "Dockerfile not found! "
-  exit 1
-fi
 DOCKER="$(which docker)"
 if [ -z "$DOCKER" ]; then
   echo "Docker is not installed!"
