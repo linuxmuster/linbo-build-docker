@@ -5,7 +5,7 @@
 This build environment based on Ubuntu 22.04 allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
 
 Note:
-- If you want to build a package of linuxmuster-linbo7 4.2.x you have to checkout branch 22.04.
+- If you want to build a package of linuxmuster-linbo7 4.0.x you have to checkout branch 18.04.
 - Run the scripts as an unprivileged user. The user has to member of the group _docker_.
 
 ### Installation/Update
