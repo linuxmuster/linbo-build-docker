@@ -3,10 +3,10 @@
 # create docker image
 #
 # thomas@linuxmuster.net
-# 20220504
+# 20240313
 #
 
-MY_NAME="linbo-build-docker-2204"
+MY_NAME="linbo-build-docker-2404"
 MY_UID="$(id -u)"
 MY_GID="$(id -g)"
 

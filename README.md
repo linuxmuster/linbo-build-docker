@@ -2,7 +2,7 @@
 
 ## Docker build environment for linuxmuster-linbo7 (main branch)
 
-This build environment based on Ubuntu 22.04 allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
+This build environment based on Ubuntu 24.04 allows building linuxmuster-linbo7 ubuntu packages on any linux distro, which provides docker and git.
 
 Note:
 - If you want to build a package of linuxmuster-linbo7 4.2.x you have to checkout branch 22.04.
