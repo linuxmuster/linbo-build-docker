@@ -6,11 +6,10 @@
 #
 
 FROM ubuntu:22.04
-MAINTAINER thomas@linuxmuster.net
 
-ENV MY_USER linbo
-ENV MY_UID 1000
-ENV MY_GID 1000
+ENV MY_USER=linbo
+ENV MY_UID=1000
+ENV MY_GID=1000
 
 COPY control /tmp/control
 
